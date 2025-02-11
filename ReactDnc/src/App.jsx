@@ -1,15 +1,20 @@
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
 
+//PAGES
+import Home from './assets/pages/home'
+import About from './assets/pages/about'
+import Projects from './assets/pages/projects'
+import Contact from './assets/pages/contact'
 
 function App() {
 
   return (
     <Router>
       <Routes>
-        <Route path='/' element={<><h1>Home</h1></>}> </Route>
-        <Route path='/about' element={<><h1>About</h1> <Link to="/">Navegar</Link></>}> </Route>
-        <Route path='/projects' element={<><h1>Projects</h1></>}> </Route>
-        <Route path='/contact' element={<><h1>Contact</h1></>}> </Route>
+        <Route path='/' element={<Home/>}> </Route>
+        <Route path='/about' element={<About/>}> </Route>
+        <Route path='/projects' element={<Projects/>}> </Route>
+        <Route path='/contact' element={<Contact/>}> </Route>
       </Routes>
     </Router>
   )

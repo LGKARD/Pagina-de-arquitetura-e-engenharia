@@ -17,20 +17,29 @@ a {
 .primary-background {
   background-color: #0c70f2;
 }
+
 .primary-color {
   background-color: #0c70f2;
 }
+
 .secondary-background {
   background-color: #1d1d1d;
 }
+
 .secondary-color {
   background-color: #1d1d1d;
 }
+
 .tertiary-background {
   background-color: #f6f6f6;
 }
+
 .tertiary-color {
   background-color: #f6f6f6;
+}
+
+.grey-1-color {
+  color: #4D5053;
 }
 
 /*grid*/
@@ -45,21 +54,27 @@ a {
 .al-center {
   align-items: center;
 }
+
 .al-end {
   align-items: end;
 }
+
 .d-flex {
   display: flex;
 }
+
 .fd-column {
   flex-direction: column;
 }
+
 .jc-center {
   justify-content: center;
 }
+
 .jc-end {
   justify-content: end;
 }
+
 .jc-between {
   justify-content: space-between;
 }
@@ -68,6 +83,7 @@ a {
   .container {
     width: 90%;
   }
+
   .mobile-fd-column {
     flex-direction: column;
   }
