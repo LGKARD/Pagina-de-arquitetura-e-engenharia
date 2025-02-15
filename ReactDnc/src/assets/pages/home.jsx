@@ -3,17 +3,16 @@ import Footer from "../../components/footer/footer"
 import Button from "../../components/button/button"
 import Banner from "../../components/banner/banner"
 import Hero from "../../components/hero/hero"
+import ProjectsList from "../../components/projectsList/projectsList"
 
 
 function Home() {
     return (
         <>
             <Header />
-            <h1>Home</h1>
-            <p>Conteúdo</p>
-            <Button buttonStyle="outline" arrow>Button</Button>
             <div className="container">
                 <Hero />
+                <ProjectsList />
             </div>
             <Footer />
         </>
