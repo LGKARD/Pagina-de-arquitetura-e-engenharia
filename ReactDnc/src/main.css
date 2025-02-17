@@ -19,7 +19,7 @@ a {
 }
 
 .primary-color {
-  background-color: #0c70f2;
+  color: #0c70f2;
 }
 
 .secondary-background {
@@ -27,7 +27,7 @@ a {
 }
 
 .secondary-color {
-  background-color: #1d1d1d;
+  color: #1d1d1d;
 }
 
 .tertiary-background {
@@ -35,7 +35,7 @@ a {
 }
 
 .tertiary-color {
-  background-color: #f6f6f6;
+  color: #f6f6f6;
 }
 
 .grey-1-color {
@@ -97,6 +97,7 @@ p {
   justify-content: space-between;
 }
 
+
 @media (max-width: 768px) {
   .container {
     width: 90%;
@@ -106,3 +107,4 @@ p {
     flex-direction: column;
   }
 }
+
