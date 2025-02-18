@@ -6,10 +6,14 @@ import About from './assets/pages/about'
 import Projects from './assets/pages/projects'
 import Contact from './assets/pages/contact'
 
+//UTILS
+import ScrollTop from './utils/scrollTop'
+
 function App() {
 
   return (
     <Router>
+      <ScrollTop/>
       <Routes>
         <Route path='/' element={<Home/>}> </Route>
         <Route path='/about' element={<About/>}> </Route>
