@@ -1,10 +1,30 @@
 import './projectsList.css'
+import { useEffect, useState } from 'react'
 
 //assets
 import LikeFilled from '../../assets/like-filled.svg'
 import Like from '../../assets/like.svg'
 
-function ProjectsList(props) {
+//utils
+import { getApiData } from '../../services/apiServices'
+
+function ProjectsList() {
+    const [projects, setProjects] = useState()
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const projectsResponse = await getApiData('projects')
+                setProjects(projectsResponse)
+            } catch {
+                setProjects([])
+            }
+        }
+
+        fetchData()
+    }, [])
+
+
     return (
         <div className='projects-section'>
             <div className='projects-hero'>
@@ -12,62 +32,18 @@ function ProjectsList(props) {
                 <p>It is a long established fact that a reader will be distracted by the of readable content of page  lookings at its layouts  points.</p>
             </div>
             <div className='projects-grid'>
-                <div className='projects-card d-flex jc-center al-center fd-column'>
-                    <div className='thumb tertiary-background'>
-                        <h3>Joao Silva</h3>
-                        <p>BH, Brasil</p>
-                        <img src={Like} height="20px" />
-                    </div>
-                </div>
-                <div className='projects-card d-flex jc-center al-center fd-column'>
-                    <div className='thumb tertiary-background'>
-                        <h3>Joao Silva</h3>
-                        <p>BH, Brasil</p>
-                        <img src={Like} height="20px" />
-                    </div>
-                </div>
-                <div className='projects-card d-flex jc-center al-center fd-column'>
-                    <div className='thumb tertiary-background'>
-                        <h3>Joao Silva</h3>
-                        <p>BH, Brasil</p>
-                        <img src={LikeFilled} height="20px" />
-                    </div>
-                </div>
-                <div className='projects-card d-flex jc-center al-center fd-column'>
-                    <div className='thumb tertiary-background'>
-                        <h3>Joao Silva</h3>
-                        <p>BH, Brasil</p>
-                        <img src={Like} height="20px" />
-                    </div>
-                </div>
-                <div className='projects-card d-flex jc-center al-center fd-column'>
-                    <div className='thumb tertiary-background'>
-                        <h3>Joao Silva</h3>
-                        <p>BH, Brasil</p>
-                        <img src={Like} height="20px" />
-                    </div>
-                </div>
-                <div className='projects-card d-flex jc-center al-center fd-column'>
-                    <div className='thumb tertiary-background'>
-                        <h3>Joao Silva</h3>
-                        <p>BH, Brasil</p>
-                        <img src={Like} height="20px" />
-                    </div>
-                </div>
-                <div className='projects-card d-flex jc-center al-center fd-column'>
-                    <div className='thumb tertiary-background'>
-                        <h3>Joao Silva</h3>
-                        <p>BH, Brasil</p>
-                        <img src={Like} height="20px" />
-                    </div>
-                </div>
-                <div className='projects-card d-flex jc-center al-center fd-column'>
-                    <div className='thumb tertiary-background'>
-                        <h3>Joao Silva</h3>
-                        <p>BH, Brasil</p>
-                        <img src={Like} height="20px" />
-                    </div>
-                </div>
+                {
+                    projects?.map((project) => (
+                        <div className='projects-card d-flex jc-center al-center fd-column' key={project.id}>
+                            <div className='thumb tertiary-background' style={{ backgroundImage: `url(${project.thumb})` }} ></div>
+                            <h3>{project.title}</h3>
+                            <p>{project.subtitle}</p>
+                            <img src={Like} height="20px" />
+
+                        </div>
+                    ))
+                }
+
             </div>
         </div>
     )
