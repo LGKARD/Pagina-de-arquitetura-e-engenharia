@@ -33,7 +33,8 @@ function ProjectsList() {
             </div>
             <div className='projects-grid'>
                 {
-                    projects?.map((project) => (
+                    projects ?
+                    projects.map((project) => (
                         <div className='projects-card d-flex jc-center al-center fd-column' key={project.id}>
                             <div className='thumb tertiary-background' style={{ backgroundImage: `url(${project.thumb})` }} ></div>
                             <h3>{project.title}</h3>
@@ -41,7 +42,7 @@ function ProjectsList() {
                             <img src={Like} height="20px" />
 
                         </div>
-                    ))
+                    )) : null
                 }
 
             </div>
