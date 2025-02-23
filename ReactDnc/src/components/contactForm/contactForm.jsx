@@ -12,11 +12,32 @@ function ContactForm() {
         message: ''
     })
     const [isFormValid, setIsFormValid] = useState(false)
+    const [formSubmitLoading, setFormSubmitLoading] = useState(false)
+    const [formSubitted, setFormSubmitted] = useState(false)
 
     const handleSubmit = async (e) => {
         e.preventDefault()
         if (isFormValid) {
-            alert("Formulário enviado com sucesso!")
+            setFormSubmitLoading(true)
+            try {
+                const response = await fetch('https://api.web3forms.com/submit', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ ...formData,
+                        access_key: "9c329279-00d1-4c3f-92bc-c62931396384"
+                    })
+                })
+
+                if (response.ok) { 
+                    setFormSubmitted(true)
+                } else {
+                    alert('Ocorreu um erro ao enviar o formulário. Por favor, tente novamente.')
+                }
+            } catch (error) { 
+                alert('Erro: ', error)
+            } finally {
+                setFormSubmitLoading(false)
+            }
         }
     }
 
@@ -73,7 +94,8 @@ function ContactForm() {
                 </div>
 
                 <div className='al-center d-flex jc-end form-group'>
-                    <Button type='submit' buttonStyle={`secondary ${!isFormValid ? 'disabled' : ''}`}>Enviar</Button>
+                    {formSubitted && <p className='text-primary'>Formulário enviado com sucesso!</p>}
+                    <Button type='submit' buttonStyle={`secondary ${!isFormValid || formSubmitLoading ? 'disabled' : ''}`}>Enviar</Button>
                 </div>
 
             </form>
