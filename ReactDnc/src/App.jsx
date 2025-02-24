@@ -1,11 +1,12 @@
 import { useContext } from 'react'
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
 
-//PAGES
+//PAGES & COMPONENTS
 import Home from './assets/pages/home'
 import About from './assets/pages/about'
 import Projects from './assets/pages/projects'
 import Contact from './assets/pages/contact'
+import LoadingSpinner from './components/loadingSpinner/loadingSpinner'
 
 //UTILS
 import ScrollTop from './utils/scrollTop'
@@ -15,7 +16,7 @@ function App() {
   const appContext = useContext(AppContext);
 
   if (appContext.loading) {
-    return <div>Loading...</div>;
+    return <LoadingSpinner/>
   }
 
   return (

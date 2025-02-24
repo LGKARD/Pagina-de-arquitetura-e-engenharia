@@ -1,11 +1,14 @@
-import { useEffect, useState } from 'react'
+import { useContext ,useEffect, useState } from 'react'
 import './contactForm.css'
 import '../button/button.css'
 
 // COMPONENTS
 import Button from '../button/button'
+//CONTEXT
+import { AppContext } from "../contexts/appContext"
 
 function ContactForm() {
+    const appContext = useContext(AppContext);
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -61,7 +64,7 @@ function ContactForm() {
 
     return (
         <div className='contact-form d-flex fd-column al-center'>
-            <h2>We love meeting new people and helping them.</h2>
+            <h2>{appContext.languages[appContext.language].contact.title}</h2>
             <form onSubmit={handleSubmit}>
                 <div className='d-flex form-group'>
                     <input
@@ -69,7 +72,7 @@ function ContactForm() {
                         type="text"
                         id='name'
                         name='name'
-                        placeholder="Name *"
+                        placeholder={appContext.languages[appContext.language].contact.pl1}
                         value={formData.name}
                         onChange={handleChange} />
                     <input
@@ -77,7 +80,7 @@ function ContactForm() {
                         type="email"
                         id='email'
                         name='email'
-                        placeholder="Email *"
+                        placeholder={appContext.languages[appContext.language].contact.pl2}
                         value={formData.email}
                         onChange={handleChange} />
                 </div>
@@ -86,7 +89,7 @@ function ContactForm() {
                         className='form-input'
                         id='message'
                         name='message'
-                        placeholder="Message *"
+                        placeholder={appContext.languages[appContext.language].contact.pl3}
                         value={formData.message}
                         onChange={handleChange}
                         rows="4">
@@ -94,8 +97,8 @@ function ContactForm() {
                 </div>
 
                 <div className='al-center d-flex jc-end form-group'>
-                    {formSubitted && <p className='text-primary'>Formulário enviado com sucesso!</p>}
-                    <Button type='submit' buttonStyle={`secondary ${!isFormValid || formSubmitLoading ? 'disabled' : ''}`}>Enviar</Button>
+                    {formSubitted && <p className='text-primary'>{appContext.languages[appContext.language].contact.sucessMsg}</p>}
+                    <Button type='submit' buttonStyle={`secondary ${!isFormValid || formSubmitLoading ? 'disabled' : ''}`}>{appContext.languages[appContext.language].general.send}</Button>
                 </div>
 
             </form>
